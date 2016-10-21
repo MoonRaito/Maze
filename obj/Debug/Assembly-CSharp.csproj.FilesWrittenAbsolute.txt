@@ -1,0 +1,17 @@
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/obj/Debug/Assembly-CSharp.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/UnityEngine.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/UnityEditor.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Mono.Cecil.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Unity.DataContract.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/MoonRaito/Desktop/GitHub/New Unity Project/Temp/bin/Debug/Mono.Cecil.Mdb.dll
