@@ -1,14 +1,27 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/test01.cs">
     <Files>
-      <File FileName="Assets/Scripts/test01.cs" Line="17" Column="50" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="4" Column="30" />
-      <File FileName="Assets/Scripts/CameraController.cs" Line="12" Column="50" />
+      <File FileName="Assets/Scripts/tool/MazeBase.cs" Line="386" Column="2" />
+      <File FileName="Assets/Scripts/test01.cs" Line="98" Column="46" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CameraController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/tool/Maze_js.js" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>nList</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/MoonRaito/Desktop/GitHub/New Unity Project/Assets/Scripts/tool/Maze.cs" line="336" column="1" />
+      <Breakpoint file="/Users/MoonRaito/Desktop/GitHub/New Unity Project/Assets/Scripts/tool/Maze.cs" line="176" column="1" />
+      <Breakpoint file="/Users/MoonRaito/Desktop/GitHub/New Unity Project/Assets/Scripts/tool/Maze.cs" line="195" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
