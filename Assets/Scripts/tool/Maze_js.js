@@ -66,10 +66,13 @@
 //        return this.grid[r][c];
 //    },
 //    setMark: function(node, value) {
-//        return node.value |= value;
+////        return node.value |= value;
+////		return node.vallue = node.value | value;
+//        return node.value | value;
 //    },
 //    removeMark: function(node, value) {
-//        return node.value &= ~value;
+////        return node.value &= ~value;
+//		return node.value & ~value;
 //    },
 //    isMarked: function(node, value) {
 //        return (node.value & value) === value;
@@ -225,19 +228,35 @@
 //
 //        dir = Maze.Direction.N;
 //        nearNode = r > 0 ? this.grid[r - 1][c] : null;
-//        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+////        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+//        if(this.isValid(nearNode, node, dir)){
+//        	nMap[dir] = [nearNode, dir];
+//        	nList.push(nMap);
+//        }
 //
 //        dir = Maze.Direction.E;
 //        nearNode = this.grid[r][c + 1];
-//        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+////        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+//        if(this.isValid(nearNode, node, dir)){
+//        	nMap[dir] = [nearNode, dir];
+//        	nList.push(nMap);
+//        }
 //
 //        dir = Maze.Direction.S;
 //        nearNode = r < this.height - 1 ? this.grid[r + 1][c] : null;
-//        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+////        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+//        if(this.isValid(nearNode, node, dir)){
+//        	nMap[dir] = [nearNode, dir];
+//        	nList.push(nMap);
+//        }
 //
 //        dir = Maze.Direction.W;
 //        nearNode = this.grid[r][c - 1];
-//        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+////        this.isValid(nearNode, node, dir) && nList.push((nMap[dir] = [nearNode, dir]));
+//        if(this.isValid(nearNode, node, dir)){
+//        	nMap[dir] = [nearNode, dir];
+//        	nList.push(nMap);
+//        }
 //
 //        this.updateValidNeighbors(nList, nMap);
 //
@@ -271,9 +290,9 @@
 //    getTraceIndex: function() {
 //        var idx = this.trace.length - 1;
 //        return idx;
-//    },
+//    }
 //
-//}
+//};
 //
 //
 //Maze.Direction = {
@@ -300,5 +319,5 @@
 //        2: 1,
 //        4: 0,
 //        8: 0
-//    },
-//}
+//    }
+//};

@@ -273,7 +273,6 @@ public class MazeBase  : MonoBehaviour {
 		nearNode = r > 0 ? this.grid[r - 1][c] : null;
 //		this.isValid(nearNode, node, dir) && nList.Add(nMap.Add(dir,new NearNode(nearNode,dir)));
 		if (this.isValid (nearNode, node, dir)) {
-			nMap.Add (dir.ToString (), new NearNode (nearNode, dir));
 
 //			nList.Add (nMap);
 
@@ -282,25 +281,26 @@ public class MazeBase  : MonoBehaviour {
 			list.Add (nearNode);
 			list.Add (dir);
 			nList.Add (list);
+
+			nMap.Add (dir.ToString (), list);
 		}
 
 		dir = Direction.E;
 		nearNode = c < this.width - 1 ? this.grid [r] [c + 1] : null;
 //		this.isValid(nearNode, node, dir) && nList.Add(nMap.Add(dir,new NearNode(nearNode,dir)));		
 		if (this.isValid (nearNode, node, dir)) {
-			nMap.Add (dir.ToString (), new NearNode (nearNode, dir));
 			//			nList.Add (nMap);
 			List<object> list = new List<object>();  
 			list.Add (nearNode);
 			list.Add (dir);
 			nList.Add (list);
+			nMap.Add (dir.ToString (), list);
 		}
 
 		dir = Direction.S;
 		nearNode = r < this.height - 1 ? this.grid[r + 1][c] : null;
 //		this.isValid(nearNode, node, dir) && nList.Add(nMap.Add(dir,new NearNode(nearNode,dir)));
 		if (this.isValid (nearNode, node, dir)) {
-			nMap.Add (dir.ToString (), new NearNode (nearNode, dir));
 			//			nList.Add (nMap);
 
 
@@ -308,20 +308,19 @@ public class MazeBase  : MonoBehaviour {
 			list.Add (nearNode);
 			list.Add (dir);
 			nList.Add (list);
+			nMap.Add (dir.ToString (), list);
 		}
 
 		dir = Direction.W;
 		nearNode = c > 0 ? this.grid [r] [c - 1] : null;
 //		this.isValid(nearNode, node, dir) && nList.Add(nMap.Add(dir,new NearNode(nearNode,dir)));
 		if (this.isValid (nearNode, node, dir)) {
-			nMap.Add (dir.ToString (), new NearNode (nearNode, dir));
 			//			nList.Add (nMap);
-
-
 			List<object> list = new List<object>();  
 			list.Add (nearNode);
 			list.Add (dir);
 			nList.Add (list);
+			nMap.Add (dir.ToString (), list);
 		}
 
 		this.updateValidNeighbors(nList, nMap);
