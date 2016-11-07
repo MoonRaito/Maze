@@ -55,8 +55,8 @@ public class test01 : MonoBehaviour {
 			maze.endNode = maze.getRandomNode ();
 		} while(maze.startNode == maze.endNode);
 
-		maze.setStart (0,0);
-		maze.setEnd (maze.width-1,maze.height-1);
+//		maze.setStart (0,0);
+//		maze.setEnd (maze.width-1,maze.height-1);
 			
 		maze.generate();
 
@@ -240,7 +240,7 @@ public class Maze : MazeBase{
 
 		System.Random random = new System.Random();
 		int key = random.Next(0,list.Count);
-//		Debug.Log (key);
+		Debug.Log ("key:"+key+" count:"+list.Count);
 		List<object> n = list[key];
 		return n;
 	}
@@ -305,7 +305,7 @@ public class Maze : MazeBase{
 		} else if (r < 0.8) {
 			idx = len * random.Next (0, 9)/10 >> 0;
 		}
-		var teast = 15 >> 1;
+//		var teast = 15 >> 1;
 		return idx;
 	}
 

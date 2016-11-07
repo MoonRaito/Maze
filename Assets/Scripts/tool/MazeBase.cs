@@ -70,7 +70,11 @@ public class MazeBase  : MonoBehaviour {
 	// 获取随机数
 	public int random(int min,int max){
 		System.Random random = new System.Random();
-		return random.Next(min,max)>> 0;
+//		return random.Next(min,max)>> 0;
+//		return random.Next(min,max);
+		int r = random.Next(min,max);
+		return r;
+//		return r >> 0;
 		//		return ((max - min + 1) * Math.random() + min) >> 0; // js
 	}
 
@@ -84,7 +88,7 @@ public class MazeBase  : MonoBehaviour {
 //		int r = this.random (0,(this.height-1));
 		int r = this.random (0,this.height-1);
 		int c = this.random (0,this.width-1);
-		return (Node)this.grid [r] [c];
+		return this.grid [r] [c];
 	}
 
 	// unused
@@ -151,6 +155,7 @@ public class MazeBase  : MonoBehaviour {
 			this.currentDir = dir;
 			this.currentDirCount = 1;
 		}
+		int i = 4 | 2;
 		this.currentNode.value |= dir;
 		this.setCurrent(node);
 		node.value |= Direction.opposite[dir];
@@ -166,7 +171,7 @@ public class MazeBase  : MonoBehaviour {
 		this.setCurrent(this.startNode);
 		this.stepCount = 0;
 		while (this.nextStep()) {
-			stepCount++;
+			this.stepCount++;
 			if (this.isOver() == true) {
 				break;
 			}
@@ -193,7 +198,7 @@ public class MazeBase  : MonoBehaviour {
 		}
 		List<object> n = this.getNeighbor();
 		//		this.moveTo((Node)n[n.Keys.First ()], (int)n["dir"]);
-		this.moveTo((Node)n[0], (int)n[1]);
+		this.moveTo((Node)(n[0]), (int)(n[1]));
 		this.updateCurrent();
 		return true;
 	} 	
@@ -203,7 +208,7 @@ public class MazeBase  : MonoBehaviour {
 		int len = this.trace.Count;
 		while (len > 0) {
 			int idx = this.getTraceIndex();
-			Node node = (Node)this.trace[idx];
+			Node node = this.trace[idx];
 			Dictionary<string,object>  nm = this.getValidNeighbors(node);
 			if (nm!=null&&nm.Count>0) {
 				this.currentNode = node;
@@ -230,7 +235,7 @@ public class MazeBase  : MonoBehaviour {
 			}
 			for (var c = x; c < ex; c++) {
 				Node node = row[c];
-				if (node==null) {
+				if (node!=null) {
 					node.value = Direction.ALL;
 				}
 			}
@@ -249,8 +254,8 @@ public class MazeBase  : MonoBehaviour {
 			}
 			for (var c = x; c < ex; c++) {
 				Node node = row [c];
-				if (node==null) {
-					node.value = 0;
+				if (node!=null) {
+					node.value = -1;
 				}
 			}
 		}
@@ -280,9 +285,9 @@ public class MazeBase  : MonoBehaviour {
 			List<object> list = new List<object>();  
 			list.Add (nearNode);
 			list.Add (dir);
+			nMap.Add (dir.ToString (), list);
 			nList.Add (list);
 
-			nMap.Add (dir.ToString (), list);
 		}
 
 		dir = Direction.E;
@@ -293,8 +298,8 @@ public class MazeBase  : MonoBehaviour {
 			List<object> list = new List<object>();  
 			list.Add (nearNode);
 			list.Add (dir);
-			nList.Add (list);
 			nMap.Add (dir.ToString (), list);
+			nList.Add (list);
 		}
 
 		dir = Direction.S;
@@ -307,8 +312,8 @@ public class MazeBase  : MonoBehaviour {
 			List<object> list = new List<object>();  
 			list.Add (nearNode);
 			list.Add (dir);
-			nList.Add (list);
 			nMap.Add (dir.ToString (), list);
+			nList.Add (list);
 		}
 
 		dir = Direction.W;
@@ -319,8 +324,8 @@ public class MazeBase  : MonoBehaviour {
 			List<object> list = new List<object>();  
 			list.Add (nearNode);
 			list.Add (dir);
-			nList.Add (list);
 			nMap.Add (dir.ToString (), list);
+			nList.Add (list);
 		}
 
 		this.updateValidNeighbors(nList, nMap);
@@ -378,8 +383,8 @@ public class MazeBase  : MonoBehaviour {
 		// 对面 对立
 		public static Dictionary<int,int> opposite = new Dictionary<int, int>{{1,2},{2,1},{4,8},{8,4}};
 		// 步骤
-		public static Dictionary<int,int> stepX = new Dictionary<int, int>{{1,0},{2,0},{4,1},{8,-1}};
-		public static Dictionary<int,int> stepY = new Dictionary<int, int>{{1,-1},{2,1},{4,0},{8,0}};
+//		public static Dictionary<int,int> stepX = new Dictionary<int, int>{{1,0},{2,0},{4,1},{8,-1}};
+//		public static Dictionary<int,int> stepY = new Dictionary<int, int>{{1,-1},{2,1},{4,0},{8,0}};
 
 
 	
@@ -401,15 +406,4 @@ public class Node{
 	}
 }
 
-public class NearNode{
-	public Node node;
-	public int dir;
-
-	public NearNode(){
-	}
-	public NearNode(Node node,int dir){
-		this.node = node;
-		this.dir = dir;
-	}
-}
 
