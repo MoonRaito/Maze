@@ -55,8 +55,8 @@ public class test01 : MonoBehaviour {
 			maze.endNode = maze.getRandomNode ();
 		} while(maze.startNode == maze.endNode);
 
-//		maze.setStart (0,0);
-//		maze.setEnd (maze.width-1,maze.height-1);
+		maze.setStart (0,0);
+		maze.setEnd (maze.width-1,maze.height-1);
 			
 		maze.generate();
 
@@ -141,36 +141,38 @@ public class test01 : MonoBehaviour {
 			h = ln.Count;
 			for (int j = 0; j < h; j++) {
 				n = ln [j];
-				initGrid (n);
+				initGrid (n,i,j,grid);
 			}
 		}
 
 		GameObject width = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		width.transform.localPosition = new Vector3 (9.0f*(h/2),1.5F,9.0f*(w-1)+4.0F);
+		float x = h % 2 != 0 ? (9.0f * (h / 2) ): (9.0f * (h / 2) - 4.0f);
+		width.transform.localPosition = new Vector3 (x,1.5F,9.0f*(w-1)+4.0F);//  x : 9.0f*(h/2)  z : 9.0f*(w-1)  下方
 		width.transform.localScale = new Vector3(9.0f*h, 1.0F, 1.0F);  // w z h
 		width.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.92f, 0.016f, 1f);
 
 		GameObject height = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		//		height.transform.localPosition = new Vector3 (9.0f*(h-1)+4.0f,1.5F,9.0f*((w-1)/2)+4.0F);
-		height.transform.localPosition = new Vector3 (9.0f*(h-1)+4.0f,1.5F,9.0f*(w/2));
+		float z = w % 2 != 0 ? (9.0f * (w / 2) ): (9.0f * (w / 2) - 4.0f);
+		height.transform.localPosition = new Vector3 (9.0f*(h-1)+4.0f,1.5F,z);
 		height.transform.localScale = new Vector3(1.0F, 1.0F, 9.0F*w);  // w z h
 		height.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.92f, 0.016f, 1f);
 	}
 
 
-	private void initGrid(Node node){
+	private void initGrid(Node node,int r,int c,List<List<Node>> grid){
 		GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		cube.transform.localPosition = new Vector3 (9.0f*node.x,0.5F,9.0f*node.y);
 		cube.transform.localScale = new Vector3(9.0F, 1.0F, 9.0F);  // w z h
 		cube.GetComponent<MeshRenderer>().material.color = new Color(1f*node.x/10, 0.92f*node.y/10, 0.016f, 1f);
 
-		int w = Maze.Direction.W;
-		int n = Maze.Direction.N;
+//		int w = Maze.Direction.W;
+//		int n = Maze.Direction.N;
 
 		bool left = (node.value & Maze.Direction.W) != Maze.Direction.W;
-		left = (node.value & w) != w;
+//		left = (node.value & w) != w;
 		bool top = (node.value & Maze.Direction.N) != Maze.Direction.N;
-		top = (node.value & n) != n;
+//		top = (node.value & n) != n;
 
 //		float x = node.x == 0 ? 9.0f * node.x - 4.0f : 9.0f * node.x;
 //		float y = node.y == 0 ? 9.0f * node.y - 4.0f : 9.0f * node.y;
@@ -182,31 +184,43 @@ public class test01 : MonoBehaviour {
 
 
 
-		if(left&&top){
-			GameObject cube1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube1.transform.localPosition = new Vector3 (x-4F,1.5F,y);
-			cube1.transform.localScale = new Vector3(1.0F, 1.0F, 9.0F);  // w z h
-			cube1.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.92f, 0.016f*node.y/10, 0.3f*node.x/10);
+		if (left && top) {
+			GameObject cube1 = GameObject.CreatePrimitive (PrimitiveType.Cube);
+			cube1.transform.localPosition = new Vector3 (x - 4F, 1.5F, y);
+			cube1.transform.localScale = new Vector3 (1.0F, 1.0F, 9.0F);  // w z h
+			cube1.GetComponent<MeshRenderer> ().material.color = new Color (1f, 0.92f, 0.016f * node.y / 10, 0.3f * node.x / 10);
 
 
-			GameObject cube2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube2.transform.localPosition = new Vector3 (x,1.5F,y-4F);
-			cube2.transform.localScale = new Vector3(9.0F, 1.0F, 1.0F);  // w z h
-			cube2.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.92f, 0.016f*node.y/10, 0.4f*node.x/10);
-		}
-
-		else if(left){
-			GameObject cube2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube2.transform.localPosition = new Vector3 (x-4F,1.5F,y);
-			cube2.transform.localScale = new Vector3(1.0F, 1.0F, 9.0F);  // w z h
-			cube2.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.42f, 0.46f, 0.4f);
-		}
-		else if(top){
-			GameObject cube2 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube2.transform.localPosition = new Vector3 (x,1.5F,y-4F);
-			cube2.transform.localScale = new Vector3(9.0F, 1.0F, 1.0F);  // w z h
+			GameObject cube2 = GameObject.CreatePrimitive (PrimitiveType.Cube);
+			cube2.transform.localPosition = new Vector3 (x, 1.5F, y - 4F);
+			cube2.transform.localScale = new Vector3 (9.0F, 1.0F, 1.0F);  // w z h
+			cube2.GetComponent<MeshRenderer> ().material.color = new Color (1f, 0.92f, 0.016f * node.y / 10, 0.4f * node.x / 10);
+		} else if (left) {
+			GameObject cube2 = GameObject.CreatePrimitive (PrimitiveType.Cube);
+			cube2.transform.localPosition = new Vector3 (x - 4F, 1.5F, y);
+			cube2.transform.localScale = new Vector3 (1.0F, 1.0F, 9.0F);  // w z h
+			cube2.GetComponent<MeshRenderer> ().material.color = new Color (1f, 0.42f, 0.46f, 0.4f);
+		} else if (top) {
+			GameObject cube2 = GameObject.CreatePrimitive (PrimitiveType.Cube);
+			cube2.transform.localPosition = new Vector3 (x, 1.5F, y - 4F);
+			cube2.transform.localScale = new Vector3 (9.0F, 1.0F, 1.0F);  // w z h
 //			cube2.GetComponent<MeshRenderer>().material.color = new Color(1f, 0.92f, 0.016f*node.y/10, 0.6f*node.x/10);
-			cube2.GetComponent<MeshRenderer>().material.color = new Color(0.32f, 0.92f, 0.16f, 0.6f);
+			cube2.GetComponent<MeshRenderer> ().material.color = new Color (0.32f, 0.92f, 0.16f, 0.6f);
+		} else {
+			bool w = false;
+			if(r > 0 ){
+				w = (grid [r - 1] [c].value & Maze.Direction.W) != Maze.Direction.W;
+			}
+			if(w && c>0){
+				w = (grid [r] [c - 1].value & Maze.Direction.N) != Maze.Direction.N;
+			}
+			if(w){
+				GameObject gap = GameObject.CreatePrimitive (PrimitiveType.Cube);
+				gap.transform.localPosition = new Vector3 (x - 4F, 1.5F, y - 4F);
+				gap.transform.localScale = new Vector3 (1.0F, 1.0F, 1.0F);  // w z h
+				gap.GetComponent<MeshRenderer> ().material.color = new Color (0.72f, 0.92f, 0.76f, 0.7f);
+			}
+
 		}
 
 	}

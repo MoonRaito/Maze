@@ -155,7 +155,7 @@ public class MazeBase  : MonoBehaviour {
 			this.currentDir = dir;
 			this.currentDirCount = 1;
 		}
-		int i = 4 | 2;
+//		int i = 4 | 2;
 		this.currentNode.value |= dir;
 		this.setCurrent(node);
 		node.value |= Direction.opposite[dir];
